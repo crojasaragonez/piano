@@ -2,7 +2,6 @@
 var es = new EventSource('/stream');
 es.onmessage = function(e) {
   var msg = JSON.parse(e.data);
-  console.log(msg);
   $('#chat').append(msg.user + ": " + msg.msg + "\n");
 };
 

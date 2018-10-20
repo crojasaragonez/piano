@@ -1,1 +1,51 @@
+:root {
+  --white-key-width: 30px;
+  --white-key-width-with-borders: 32px;
+  --white-key-height: 80px;
+  --black-key-height: 60px;
+  --black-key-width: calc(var(--white-key-width) / 2);
+  --piano-width: calc(var(--white-key-width-with-borders) * 15);
+}
+
+.piano {
+  display: flex;
+}
+
+.key {
+  border: 1px solid;
+}
+
+.white {
+  width: var(--white-key-width);
+  height: var(--white-key-height);
+  background-color: white;
+  filter: brightness(100%);
+}
+
+.white:hover {
+  filter: brightness(70%);
+}
+
+.black {
+  position: relative;
+  width: var(--black-key-width);
+  height: var(--black-key-height);
+  background-color: black;
+}
+
+.black:hover {
+  background-color: gray;
+}
+
+.black-keys {
+  margin-left: calc(var(--white-key-width-with-borders) / 2);
+  width: var(--piano-width);
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+}
+
+.black:nth-child(3), .black:nth-child(7), .black:nth-child(10), .black:nth-child(14) {
+  visibility: hidden;
+}
 
