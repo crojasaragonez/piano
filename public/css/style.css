@@ -48,3 +48,6 @@
   visibility: hidden;
 }
 
+.active {
+  background-color: red;
+}

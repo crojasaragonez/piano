@@ -5,6 +5,10 @@ var es = new EventSource('/stream');
 es.onmessage = function(e) {
   var msg = JSON.parse(e.data);
   synth.triggerAttackRelease(msg.note, "8n");
+  $('#' + msg.note).addClass('active').delay(500).queue(function () {
+    $(this).removeClass("active");
+    $(this).dequeue();
+  })
 };
 
 $('.key').click(function(event) {
