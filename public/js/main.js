@@ -1,13 +1,21 @@
+var synth = new Tone.AMSynth().toMaster()
+
 // reading
 var es = new EventSource('/stream');
 es.onmessage = function(e) {
   var msg = JSON.parse(e.data);
-  $('#chat').append(msg.user + ": " + msg.msg + "\n");
+  synth.triggerAttackRelease(msg.note, "8n");
 };
 
-// writing
-$("form").on('submit',function(e) {
-  $.post('/', {msg: $('#msg').val()});
-  $('#msg').val(''); $('#msg').focus();
-  e.preventDefault();
+$('.key').click(function(event) {
+  $.post('/', { note: $(this).attr('id') });
+  //synth.triggerAttack($(this).attr('id'), "2n");
 });
+
+/*$('.key').mousedown(function(event) {
+  synth.triggerAttack($(this).attr('id'));
+});
+
+$('.key').mouseup(function(event) {
+  synth.triggerRelease()
+});*/

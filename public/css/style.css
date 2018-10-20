@@ -27,7 +27,6 @@
 }
 
 .black {
-  position: relative;
   width: var(--black-key-width);
   height: var(--black-key-height);
   background-color: black;

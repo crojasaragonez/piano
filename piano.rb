@@ -19,8 +19,7 @@ get '/stream', provides: 'text/event-stream' do
 end
 
 post '/' do
-  msg = { msg: params[:msg], user: session['user'] }
-  puts msg
+  msg = { note: params[:note], user: session['user'] }
   connections.each { |out| out << "data: #{msg.to_json}\n\n" }
   204 # response without entity body
 end
