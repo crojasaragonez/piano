@@ -1,3 +1,7 @@
+:root {
+  --white-border-color: #AAAAAA;
+  --border-size: 0.12vw;
+}
 html {
   height: 100%;
 }
@@ -20,9 +24,9 @@ body {
   height: 14.4vw;
   width: 3.8095238095vw;
   z-index: 1;
-  border-top: 0.12vw solid #AAAAAA;
-  border-bottom: 0.12vw solid #AAAAAA;
-  border-left: 0.12vw solid #AAAAAA;
+  border-top: var(--border-size) solid var(--white-border-color);
+  border-bottom: var(--border-size) solid var(--white-border-color);
+  border-left: var(--border-size) solid var(--white-border-color);
   background-color: #CBCBCB;
   filter: brightness(100%);
 }
@@ -35,8 +39,17 @@ body {
   height: 7.92vw;
   width: 2.0952380952vw;
   z-index: 2;
-  border: 0.12vw solid #000000;
+  border: var(--border-size) solid #000000;
   background-color: #222222;
+}
+
+.active {
+  background-color: red;
+}
+
+.black:hover {
+  background-color: gray;
+  border: var(--border-size) solid gray;
 }
 
 .a, .b, .d, .e, .g, .black {
@@ -44,5 +57,5 @@ body {
 }
 
 #keyboard > .note:last-child {
-  border-right: 0.12vw solid #AAAAAA;
+  border-right: var(--border-size) solid var(--white-border-color);
 }
