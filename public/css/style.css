@@ -1,24 +1,29 @@
-:root {
-  --white-key-width: 30px;
-  --white-key-width-with-borders: 32px;
-  --white-key-height: 80px;
-  --black-key-height: 60px;
-  --black-key-width: calc(var(--white-key-width) / 2);
-  --piano-width: calc(var(--white-key-width-with-borders) * 15);
+html {
+  height: 100%;
 }
 
-.piano {
+body {
+  height: 100%;
   display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  background-color: #111;
 }
 
 .key {
-  border: 1px solid;
+  float: left;
+  position: relative;
 }
 
 .white {
-  width: var(--white-key-width);
-  height: var(--white-key-height);
-  background-color: white;
+  height: 14.4vw;
+  width: 3.8095238095vw;
+  z-index: 1;
+  border-top: 0.12vw solid #AAAAAA;
+  border-bottom: 0.12vw solid #AAAAAA;
+  border-left: 0.12vw solid #AAAAAA;
+  background-color: #CBCBCB;
   filter: brightness(100%);
 }
 
@@ -27,27 +32,17 @@
 }
 
 .black {
-  width: var(--black-key-width);
-  height: var(--black-key-height);
-  background-color: black;
+  height: 7.92vw;
+  width: 2.0952380952vw;
+  z-index: 2;
+  border: 0.12vw solid #000000;
+  background-color: #222222;
 }
 
-.black:hover {
-  background-color: gray;
+.a, .b, .d, .e, .g, .black {
+  margin: 0 0 0 -1.1676190476vw;
 }
 
-.black-keys {
-  margin-left: calc(var(--white-key-width-with-borders) / 2);
-  width: var(--piano-width);
-  position: absolute;
-  display: flex;
-  justify-content: space-around;
-}
-
-.black:nth-child(3), .black:nth-child(7), .black:nth-child(10), .black:nth-child(14) {
-  visibility: hidden;
-}
-
-.active {
-  background-color: red;
+#keyboard > .note:last-child {
+  border-right: 0.12vw solid #AAAAAA;
 }
