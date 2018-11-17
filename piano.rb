@@ -6,9 +6,9 @@ connections = []
 enable :sessions
 
 get '/' do
-  session['user'] = params[:user].gsub(/\W/, '') if params[:user]
-  halt erb(:login, layout: :layout) unless session['user']
-  erb :piano, locals: { user: session['user'] }
+  session['color'] = params[:color].gsub(/\W/, '') if params[:color]
+  halt erb(:login, layout: :layout) unless session['color']
+  erb :piano, locals: { color: session['color'] }
 end
 
 get '/stream', provides: 'text/event-stream' do
@@ -19,7 +19,7 @@ get '/stream', provides: 'text/event-stream' do
 end
 
 post '/' do
-  msg = { note: params[:note], user: session['user'] }
+  msg = { note: params[:note], color: session['color'] }
   connections.each { |out| out << "data: #{msg.to_json}\n\n" }
   204 # response without entity body
 end
