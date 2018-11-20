@@ -1,9 +1,9 @@
-var synth = new Tone.AMSynth().toMaster();
-var worker  = new Worker('/js/worker.js');
+const synth  = new Tone.AMSynth().toMaster();
+const worker = new Worker('/js/worker.js');
 
-worker.onmessage = function(event) {
-  var msg = event.data;
-  synth.triggerAttackRelease(msg.note, "8n");
+worker.onmessage = (event) => {
+  const msg = event.data;
+  synth.triggerAttackRelease(msg.note, '8n');
 
   $('#' + msg.note).css('background-color', msg.color)
                    .delay(500)
