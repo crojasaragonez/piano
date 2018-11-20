@@ -3,12 +3,10 @@ require 'json'
 
 set :server, 'thin'
 connections = []
-enable :sessions
 
 get '/' do
-  session['color'] = params[:color].gsub(/\W/, '') if params[:color]
-  halt erb(:login, layout: :layout) unless session['color']
-  erb :piano, locals: { color: session['color'] }
+  halt erb(:login, layout: :layout) unless color
+  erb :piano, locals: { color: color }
 end
 
 get '/stream', provides: 'text/event-stream' do
@@ -19,7 +17,11 @@ get '/stream', provides: 'text/event-stream' do
 end
 
 post '/' do
-  msg = { note: params[:note], color: session['color'] }
+  msg = { note: params[:note], color: color }
   connections.each { |out| out << "data: #{msg.to_json}\n\n" }
   204 # response without entity body
+end
+
+def color
+  @color ||= params[:color]
 end

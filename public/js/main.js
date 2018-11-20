@@ -15,5 +15,5 @@ worker.onmessage = function(event){
 };
 
 $('.key').click(function(event) {
-  $.post('/', { note: $(this).attr('id') });
+  $.post('/', { note: $(this).attr('id'), color: $('#color').val() });
 });
